@@ -1,0 +1,28 @@
+# ========================
+# RASA SPECIFIC ARTIFACTS
+# ========================
+# Never let the AI read trained models or cache
+models/
+.rasa/
+*.tar.gz
+results/
+
+# ========================
+# PYTHON ENVIRONMENTS
+# ========================
+# Hides thousands of library files
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# ========================
+# LOGS & DATABASES
+# ========================
+# Hides heavy chatbot conversation histories
+*.db
+*.sqlite
+rasa.log
+events.log
+action_server.log
