@@ -1,36 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>AutoMaroc Assistant</title>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoMaroc - Location de Véhicules</title>
+    
+    <!-- Link to your local favicon -->
+    <link rel="icon" href="./favicon" type="image/x-icon">
 
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #2d3748; background-color: #f7fafc; }
+        
+        /* Header / Navigation */
+        header { 
+            background: #ffffff; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08); 
+            padding: 15px 5%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        .logo-container { display: flex; align-items: center; gap: 10px; }
+        .logo-container img { height: 40px; width: auto; }
+        .logo-container h1 { font-size: 1.5rem; color: #0D6EFD; font-weight: 700; }
+        
+        nav a { color: #4a5568; text-decoration: none; margin-left: 20px; font-weight: 500; transition: color 0.2s; }
+        nav a:hover { color: #0D6EFD; }
+
+        /* Hero Banner */
+        .hero { 
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1503376760367-1154ce1174ee?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: white; 
+            padding: 0 20px;
+        }
+        .hero-content { max-width: 750px; margin-top: 40px; }
+        .hero h2 { font-size: 3rem; margin-bottom: 20px; font-weight: 800; }
+        .hero p { font-size: 1.25rem; margin-bottom: 30px; line-height: 1.6; opacity: 0.95; }
+        
+        .btn-chat { 
+            background: #0D6EFD; 
+            color: white; 
+            border: none; 
+            padding: 16px 32px; 
+            font-size: 1.1rem; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.4);
+        }
+        .btn-chat:hover { background: #0b5ed7; transform: translateY(-2px); }
+
+        /* Footer */
+        footer { background: #1a202c; color: #a0aec0; text-align: center; padding: 20px; font-size: 0.9rem; }
+    </style>
+</head>
 <body>
 
-<script src="https://cdn.jsdelivr.net/npm/rasa-webchat@1.0.1/lib/index.js"></script>
+    <!-- Header Navigation Bar -->
+    <header>
+        <div class="logo-container">
+            <img src="./logo.png" alt="AutoMaroc Logo">
+            <h1>AutoMaroc</h1>
+        </div>
+        <nav>
+            <a href="#">Accueil</a>
+            <a href="#">Nos Véhicules</a>
+            <a href="#">Tarifs</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
 
-<script>
-window.WebChat.default(
-{
-    socketUrl: "http://134.112.57.46",
-    socketPath: "/socket.io/",
+    <!-- Main Landing Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Réservez Votre Véhicule au Maroc</h2>
+            <p>Profitez d'un service de location simple et rapide. Discutez directement avec notre assistant virtuel pour vérifier les disponibilités et réserver en quelques instants.</p>
+            
+            <!-- Button triggers opening the Botfront widget -->
+            <button class="btn-chat" onclick="document.querySelector('.rw-launcher').click()">
+                Discuter avec l'Assistant
+            </button>
+        </div>
+    </section>
 
-    title: "AutoMaroc Assistant",
-    subtitle: "Location de véhicules au Maroc",
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 AutoMaroc - Service de Location de Véhicules.</p>
+    </footer>
 
-    profileAvatar: "./logo.png",
-    openLauncherImage: "https://cdn-icons-png.flaticon.com/512/744/744465.png",
+    <!-- Botfront / Rasa Webchat Script -->
+    <script src="https://cdn.jsdelivr.net/npm/rasa-webchat@1.0.1/lib/index.js"></script>
+    <script>
+        window.WebChat.default(
+        {
+            socketUrl: "http://134.112.57.46",
+            socketPath: "/socket.io/",
 
-    primaryColor: "#0D6EFD",
-    hideWhenNotConnected: false,
-    displayUnreadCount: true,
+            title: "AutoMaroc Assistant",
+            subtitle: "Location de véhicules au Maroc",
 
-    params: {
-        storage: "session"
-    }
+            /* Local assets referenced from your frontend/ folder */
+            profileAvatar: "./logo.png",
+            openLauncherImage: "./logo.png",
 
-}, null);
-</script>
+            primaryColor: "#0D6EFD",
+            hideWhenNotConnected: false,
+            displayUnreadCount: true,
+
+            params: {
+                storage: "session"
+            }
+        }, null);
+    </script>
 
 </body>
 </html>
