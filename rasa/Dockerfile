@@ -18,4 +18,4 @@ EXPOSE 5005
 HEALTHCHECK --interval=30s --timeout=10s --start-period=120s --retries=3 \
   CMD curl -f http://localhost:5005/status || exit 1
 
-CMD ["run", "--enable-api", "--cors", "*", "--port", "5005", "--host", "0.0.0.0", "--endpoints", "endpoints.yml"]
+CMD ["run", "--enable-api", "--cors", "*", "-i", "0.0.0.0", "-p", "5005", "--endpoints", "endpoints.yml"]
