@@ -17,7 +17,9 @@ from rasa_sdk.types import DomainDict
 # ---------------------------------------------------------------------------
 
 VALID_CATEGORIES = {
-    "economique": "Économique",
+    "dacia logan": "Économique",
+    "dacia": "Économique",
+    "logan": "Économique",
     "économique": "Économique",
     "eco": "Économique",
     "citadine": "Citadine",
